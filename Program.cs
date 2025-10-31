@@ -64,13 +64,13 @@
             else if (sarr[rmid] == value)
                 return rmid;
             else if (value < sarr[lmid])
-                right = lmid;  //lmid - 1;
+                right = lmid - 1;
             else if (value > sarr[rmid])
                 left = rmid; //rmid + 1;
             else
             {
                 left = lmid; //lmid + 1;
-                right = rmid; //rmid - 1;
+                right = rmid - 1;
             }
         }
         return -1;
