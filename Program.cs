@@ -58,7 +58,7 @@
         int left = 0, right = sarr.Length - 1;
         while (left <= right)
         {
-            int lmid = (left + right) / 3, rmid = 2 * (left + right) / 3;
+            int lmid = (left + right) / 3, rmid = Math.Min(2 * (left + right) / 3, sarr.Length-1);
             if (sarr[lmid] == value)
                 return lmid;
             else if (sarr[rmid] == value)
@@ -79,6 +79,7 @@
     {
         int[] arr = { 9, 7, 2, 4, 3, 11, 8 };
         int value = 4;
+        // 5/3=1 và 5/3=3
 
         int index_seq = SeqSearch(arr, value);
         int index_recu = RecuSearch(arr, 0, value);
@@ -97,5 +98,8 @@
 
         int index_bin_recu = BinSearchRecu(sarr, v, 0, sarr.Length - 1);
         Console.WriteLine($"Binary Recursive: {index_bin_recu}");
+
+        int index_tri = TriSearch(sarr, v);
+        Console.WriteLine($"Triple: {index_tri}");
     }
 }
