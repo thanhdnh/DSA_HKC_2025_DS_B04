@@ -53,6 +53,28 @@
         else
             return BinSearchRecu(sarr, value, from, mid - 1);
     }
+    static int TriSearch(int[] sarr, int value)
+    {
+        int left = 0, right = sarr.Length - 1;
+        while (left <= right)
+        {
+            int lmid = (left + right) / 3, rmid = 2 * (left + right) / 3;
+            if (sarr[lmid] == value)
+                return lmid;
+            else if (sarr[rmid] == value)
+                return rmid;
+            else if (value < sarr[lmid])
+                right = lmid - 1;
+            else if (value > sarr[rmid])
+                left = rmid + 1;
+            else
+            {
+                left = lmid + 1;
+                right = rmid - 1;
+            }
+        }
+        return -1;
+    }
     private static void Main(string[] args)
     {
         int[] arr = { 9, 7, 2, 4, 3, 11, 8 };
