@@ -14,7 +14,7 @@
         else
             return RecuSearch(arr, from + 1, value);
     }
-    static int SenSearch(int [] arr, int value)
+    static int SenSearch(int[] arr, int value)
     {
         int x = arr[arr.Length - 1];
         arr[arr.Length - 1] = value;//đặt cầm canh
@@ -24,9 +24,34 @@
             return index;
         else
             if (arr[arr.Length - 1] == value)
-                return arr.Length - 1;
+            return arr.Length - 1;
+        else
+            return -1;
+    }
+    static int BinSearch(int[] sarr, int value)
+    {
+        int left = 0, right = sarr.Length - 1;
+        while (left <= right)
+        {
+            int mid = (left + right) / 2;
+            if (sarr[mid] == value)
+                return mid;
+            else if (value > sarr[mid])
+                left = mid + 1;
             else
-                return -1;
+                right = mid - 1;
+        }
+        return -1;
+    }
+    static int BinSearchRecu(int[] sarr, int value, int from, int to)
+    {
+        int mid = (from + to) / 2;
+        if (sarr[mid] == value)
+            return mid;
+        else if (value > sarr[mid])
+            return BinSearchRecu(sarr, value, mid + 1, to);
+        else
+            return BinSearchRecu(sarr, value, from, mid - 1);
     }
     private static void Main(string[] args)
     {
@@ -42,5 +67,13 @@
         int value2 = 8;
         int index_sen = SenSearch(arr, value2);
         Console.WriteLine($"Sentinel: {index_sen}");
+
+        int[] sarr = { 1, 4, 6, 8, 9, 13 };
+        int v = 9;
+        int index_bin = BinSearch(sarr, v);
+        Console.WriteLine($"Binary: {index_bin}");
+
+        int index_bin_recu = BinSearchRecu(sarr, v, 0, sarr.Length - 1);
+        Console.WriteLine($"Binary Recursive: {index_bin_recu}");
     }
 }
