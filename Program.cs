@@ -58,19 +58,19 @@
         int left = 0, right = sarr.Length - 1;
         while (left <= right)
         {
-            int lmid = (left + right) / 3, rmid = Math.Min(2 * (left + right) / 3, sarr.Length-1);
+            int lmid = (left + right) / 3, rmid = 2 * (left + right) / 3; //Math.Min(2 * (left + right) / 3, sarr.Length-1);
             if (sarr[lmid] == value)
                 return lmid;
             else if (sarr[rmid] == value)
                 return rmid;
             else if (value < sarr[lmid])
-                right = lmid - 1;
+                right = lmid;  //lmid - 1;
             else if (value > sarr[rmid])
-                left = rmid + 1;
+                left = rmid; //rmid + 1;
             else
             {
-                left = lmid + 1;
-                right = rmid - 1;
+                left = lmid; //lmid + 1;
+                right = rmid; //rmid - 1;
             }
         }
         return -1;
