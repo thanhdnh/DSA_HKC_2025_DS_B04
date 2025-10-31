@@ -79,7 +79,6 @@
     {
         int[] arr = { 9, 7, 2, 4, 3, 11, 8 };
         int value = 4;
-        // 5/3=1 và 5/3=3
 
         int index_seq = SeqSearch(arr, value);
         int index_recu = RecuSearch(arr, 0, value);
